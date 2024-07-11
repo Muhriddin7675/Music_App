@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:backgroundTint="@color/app_bg_color"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/music_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        style="@style/BottomNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_bottomnavigation"
+        android:elevation="150dp"
+        app:itemIconSize="22dp"
+        app:itemIconTint="@color/bg_menu_item_color"
+        app:itemTextColor="@color/bg_menu_item_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/my_bottom_menu" />
+
+    <View
+        android:id="@+id/music_view"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/cloor_image"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_main"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/cloor_image"
+        android:padding="12dp"
+        android:src="@drawable/ic_music_white"
+        app:layout_constraintBottom_toBottomOf="@id/music_view"
+        app:layout_constraintStart_toStartOf="@id/music_view"
+        app:layout_constraintTop_toTopOf="@id/music_view" />
+
+    <TextView
+        android:id="@+id/music_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/music_author"
+        app:layout_constraintEnd_toStartOf="@+id/btn_music_play"
+        app:layout_constraintStart_toEndOf="@id/image_main"
+        app:layout_constraintTop_toTopOf="@id/music_view"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/music_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="24dp"
+        android:text="Nomalum ijrochi |..."
+        android:textColor="@color/white"
+        android:fontFamily="@font/signika"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/music_view"
+        app:layout_constraintEnd_toStartOf="@+id/btn_music_play"
+        app:layout_constraintStart_toEndOf="@id/image_main"
+        app:layout_constraintTop_toBottomOf="@id/music_name"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_menu_book"
+        app:layout_constraintBottom_toBottomOf="@id/music_author"
+        app:layout_constraintStart_toStartOf="@id/music_author"
+        app:layout_constraintTop_toTopOf="@id/music_author"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/btn_music_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:elevation="100dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@id/music_view"
+        app:layout_constraintEnd_toStartOf="@id/btn_next"
+        app:layout_constraintTop_toTopOf="@id/music_view" />
+
+    <ImageView
+        android:id="@+id/btn_next"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="20dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:elevation="100dp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="@id/music_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/music_view"
+        app:tint="@color/white" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/btn_music_next"-->
+    <!--        android:layout_width="24dp"-->
+    <!--        android:layout_height="24dp"-->
+    <!--        android:layout_marginEnd="24dp"-->
+    <!--        android:background="?android:selectableItemBackgroundBorderless"-->
+    <!--        android:src="@drawable/ic_next"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/music_view"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/music_view" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

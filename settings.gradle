@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "Music App"
+include ':app'

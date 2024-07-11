@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavigationBar" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:elevation">0dp</item>
+        <item name="tabIconTint">@color/icon_color</item>
+        <item name="icon">@color/icon_color</item>
+        <item name="iconTint">@color/icon_color</item>
+        <item name="colorPrimarySurface">@color/icon_color</item>
+        <item name="colorButtonNormal">@color/icon_color</item>
+        <item name="checkedIconTint">@color/icon_color</item>
+    </style>
+
+</resources>
