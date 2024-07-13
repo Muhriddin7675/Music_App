@@ -70,10 +70,12 @@ class MusicPlayScreen : Fragment(R.layout.screen_play_music) {
             }
         }
         binding.btnNext.setOnClickListener {
+            MyAppManager.currentTime = 0;
             startMyService(ActionEnum.NEXT)
             isHasMusicFavorite()
         }
         binding.btnPrev.setOnClickListener {
+            MyAppManager.currentTime = 0;
             startMyService(ActionEnum.PREV)
             isHasMusicFavorite()
         }
@@ -115,12 +117,12 @@ class MusicPlayScreen : Fragment(R.layout.screen_play_music) {
         )
         isHasMusicFavorite()
         binding.seekbar.max = MyAppManager.fullTime.toInt()
-        binding.seekbar.progress = 0
+        binding.seekbar.progress = MyAppManager.currentTime.toInt()
         binding.musicName.text = it.title
         binding.musicAuthor.text = it.artist
         binding.textAudioPlayedTime.text = MyAppManager.currentTime.toString()
         binding.textAudioTime.text = updateTimer(it.duration)
-        binding.textAudioPlayedTime.text = updateTimer(0L)
+        binding.textAudioPlayedTime.text = updateTimer(MyAppManager.currentTime)
     }
 
     private val isPlayingObserver = Observer<Boolean> {
@@ -129,6 +131,11 @@ class MusicPlayScreen : Fragment(R.layout.screen_play_music) {
     }
 
     private val currentTimeObserver = Observer<Long> {
+        binding.seekbar.progress = MyAppManager.currentTime.toInt()
+        binding.textAudioPlayedTime.text = updateTimer(MyAppManager.currentTime)
+    }
+
+    private val currentTimeNullObserver = Observer<Long> {
         binding.seekbar.progress = MyAppManager.currentTime.toInt()
         binding.textAudioPlayedTime.text = updateTimer(MyAppManager.currentTime)
     }
@@ -148,11 +155,14 @@ class MusicPlayScreen : Fragment(R.layout.screen_play_music) {
     }
 
     private fun startMyService(action: ActionEnum) {
+        val currentProgress = binding.seekbar.progress
         val intent = Intent(requireContext(), MyService::class.java)
         intent.putExtra("COMMAND", action)
         if (Build.VERSION.SDK_INT >= 26) {
             requireActivity().startForegroundService(intent)
         } else requireActivity().startService(intent)
+
+        binding.seekbar.progress = currentProgress
     }
 
     private fun refreshBtn() {
